@@ -30,6 +30,13 @@ const List = styledComponents.div`
 display:flex;
 justify-content:center;
 margin 2rem 0rem;
+@media only screen and (max-width: 480px) {
+
+  margin-right: 1rem ;
+  margin-left:1rem;
+}
+
+
 `;
 const SLink = styledComponents(NavLink)`
 display:flex;
@@ -58,7 +65,13 @@ svg{
     svg{color:white}
     h4{color:white}
 }
+@media only screen and (max-width: 480px) {
 
+  margin-right:1rem;
+  min-width:5rem;
+  min-height:5rem;
+
+}
 
 
 `;

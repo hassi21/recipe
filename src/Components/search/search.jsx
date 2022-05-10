@@ -28,7 +28,11 @@ margin: 0rem 5rem;
 div{
     position: relative;
 width:100%;
+min-width:38rem;
+
 }
+display:flex;
+justify-content:center;
 input{
     border:none;
     background: linear-gradient(35deg,#494949,#313131);
@@ -46,6 +50,12 @@ svg{
     left:0%;
     transform: translate(100%,-50%);
     color:white;
+}
+@media only screen and (max-width: 480px) {
+  div{
+    min-width:2rem;
+    
+  }
 }
 `;
 

@@ -38,6 +38,17 @@ function Popular() {
             pagination: false,
             drag: "free",
             gap: "5rem",
+            autoplay: true,
+            lazyLoad: true,
+            breakpoints: {
+              480: {
+                perPage: 1,
+                snap:true,
+              },
+              768: {
+                perPage: 2,
+              },
+            },
           }}
         >
           {popular.map((recipe) => {
@@ -65,7 +76,7 @@ const Wrapper = styledComponents.div`
 const Card = styledComponents.div`
   height: 12rem;
   border-radius: 2rem;
-  width:16rem;
+  
   overflow: hidden;
   position: relative;
    img {
@@ -94,6 +105,12 @@ const Card = styledComponents.div`
     background-color:rgba(0,0,0,0.3);
     padding:0.5rem;
 
+  }
+  @media only screen and (max-width: 480px) {
+    margin: 0 2rem;
+    height: 18rem;
+
+    
   }
 `;
 const Gradient = styledComponents.div`

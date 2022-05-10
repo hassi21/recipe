@@ -37,7 +37,17 @@ function Veggie() {
             arrows: false,
             pagination: false,
             drag: "free",
-            gap: "5rem",
+            gap: "3rem",
+            lazyLoad:true,
+            breakpoints: {
+              
+              480: {
+                perPage: 1,
+                snap:true,
+              },
+            768:{
+              perPage:2,
+            }},
           }}
         >
           {veggie.map((recipe) => {
@@ -64,7 +74,6 @@ const Wrapper = styledComponents.div`
 `;
 const Card = styledComponents.div`
   height: 15rem;
-  width:22rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
@@ -94,6 +103,11 @@ const Card = styledComponents.div`
     background-color:rgba(0,0,0,0.3);
     padding:0.5rem;
 
+  }
+  @media only screen and (max-width: 480px) {
+    margin: 0 2rem;
+    height: 20rem;
+    
   }
 `;
 const Gradient = styledComponents.div`

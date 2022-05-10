@@ -11,8 +11,8 @@ function Recipe() {
       `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
     );
     const detailData = await data.json();
-    console.log(detailData);
-    setDetails(detailData);
+    detailData.status=="success"?setDetails(detailData):console.log(detailData.status.toUpperCase()+": "+detailData.message);
+    
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Recipe() {
 
   return (
     <DetailWrapper>
-      <div>
+      <div className="titleDiv">
         <h2>{details.title}</h2>
         <img src={details.image} alt={details.title} />
       </div>
@@ -64,28 +64,50 @@ function Recipe() {
 const DetailWrapper = styledComponents.div`
 margin-top: 10rem;
 margin-bottom:5rem;
-display: flex;
+display: grid;
+grid-template-areas:"image ingredients";
+h2{
+  margin-bottom:4rem;
+  font-weight:600;
+  font-size:2rem;
+}
+
 .active {
   background: linear-gradient(35deg, #494949, #313131);
   color: white;
 }
-h2 {
-  margin-bottom: 2rem;
-}
-li {
-  font-size: 1.6rem;
-  line-height: 2.5rem;
-}
-ul {
-  margin-top: 2rem;
+.titleDiv{
+  grid-area:image;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  
 }
 img{
   height:18rem;
+  
 }
+
+@media only screen and (max-width: 480px) {
+  img{
+    height:25rem;
+  }
+  grid-template-areas:
+  "image"
+  "ingredients";
+  .titleDiv{
+    margin-bottom:3rem;
+    
+}
+}
+
+
+
 
 `;
 
 const Button = styledComponents.button`
+
 padding:1rem 2rem;
 background: white;
 color:#313131;
@@ -94,5 +116,15 @@ margin: 0 2rem 2rem 0;
 font-weight:600;
 `;
 const Info = styledComponents.div`
-margin-left:6rem;`;
+grid-area:ingredients;
+margin-left:6rem;
+
+
+
+@media only screen and (max-width: 480px) {
+ margin-left:0rem;
+ 
+}
+
+`;
 export default Recipe;
